@@ -1,0 +1,13 @@
+{
+  "name": "mikeprosser.github.io",
+  "version": "1.0.0",
+  "description": "Mike Prosser's CV",
+  "main": "gruntfile.js",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt-contrib-less": "^1.2.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
