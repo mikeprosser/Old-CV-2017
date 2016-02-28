@@ -1,0 +1,115 @@
+@haas-bioroid-background: rgb(238,224,248);
+@haas-bioroid-border: rgb(86,75,138);
+@nbn-background: rgb(239,228,208);
+@nbn-border: rgb(242,202,80);
+@jinteki-background: rgb(245,222,217);
+@jinteki-border: rgb(140,7,18);
+@weyland-background: rgb(235,244,240);
+@weyland-border: rgb(57,115,94);
+@anarch-background: rgb(239,230,223);
+@anarch-border: rgb(242,109,61);
+@criminal-background: rgb(221,231,253);
+@criminal-border: rgb(96,147,222);
+@shaper-background: rgb(235,245,234);
+@shaper-border: rgb(96,181,78);
+@neutral-background: rgb(239,239,244);
+@neutral-border: rgb(179,183,191);
+
+.deckList {
+    @media (min-width: 769px) {
+        width: 50%;
+        padding: 0 0 0 20px;
+        &:first-child {
+            padding-right: 20px;
+            padding-left: 0;
+        }
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    h3, button {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    button {
+        background-color: #dff0d8;
+        border: 1px solid #3c763d !important;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    .deckEntry {
+        cursor: pointer;
+        margin-bottom: 10px;
+        list-style: none;
+    }
+}
+
+.deckEntry {
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid @neutral-border;
+    background-color: @neutral-background;
+
+    &.Haas-Bioroid {
+        border-color: @haas-bioroid-border;
+        background-color: @haas-bioroid-background;
+    }
+
+    &.NBN {
+        border-color: @nbn-border;
+        background-color: @nbn-background;
+    }
+
+    &.Jinteki {
+        border-color: @jinteki-border;
+        background-color: @jinteki-background;
+    }
+
+    &.Weyland {
+        border-color: @weyland-border;
+        background-color: @weyland-background;
+    }
+
+    &.Anarch {
+        border-color: @anarch-border;
+        background-color: @anarch-background;
+    }
+
+    &.Criminal {
+        border-color: @criminal-border;
+        background-color: @criminal-background;
+    }
+
+    &.Shaper {
+        border-color: @shaper-border;
+        background-color: @shaper-background;
+    }
+}
+
+.editingDeck {
+    .titleSection {
+        position: relative;
+        h3 {
+            width: 50%;
+        }
+        .buttonHolder {
+            width: 10%;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            webkit-transform: translateY(-50%);
+            moz-transform: translateY(-50%);
+            ms-transform: translateY(-50%);
+            o-transform: translateY(-50%);
+        }
+    }
+}
