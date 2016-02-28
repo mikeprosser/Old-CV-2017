@@ -1,3 +1,13 @@
+body {
+    background-image: url('../img/symphony.png');
+    background-repeat: repeat;
+    background-position: top center;
+
+    @media (max-width: 499px) {
+        margin: 0;
+    }
+}
+
 * {
     font-family: 'Roboto', sans-serif;
 }
@@ -15,11 +25,16 @@ hr {
 
 #mainContainer {
     max-width: 992px;
-    margin: 0 auto;
+    margin: 15px auto 100px;
     padding: 20px;
+    background-color: white;
+    -webkit-box-shadow: 0 0 15px 0px rgba(130,130,130,0.75);
+    -moz-box-shadow: 0 0 15px 0px rgba(130,130,130,0.75);
+    box-shadow: 0 0 15px 0px rgba(130,130,130,0.75);
 
     @media (max-width: 499px) {
         text-align: center;
+        margin: 0;
     }
 }
 
@@ -46,4 +61,8 @@ hr {
         max-width: 200px;
         border-radius: 50%;
     }
+}
+
+.emphasise {
+    text-decoration: underline
 }
