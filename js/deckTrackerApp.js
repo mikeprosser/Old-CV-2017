@@ -47,11 +47,15 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
     }
 ])
 
-.controller("deckController", ["$scope",
-    function($scope) {
+.controller("deckController", ["$scope", "netrunnerDBService",
+    function($scope, netrunnerDBService) {
 
         $scope.init = function() {
             $scope.deck = $scope.editingDeck;
+            netrunnerDBService.getCard($scope.deck.identity).then(function(res) {
+                $scope.deckIdentity = res.data[0];
+                $scope.idImage = netrunnerDBService.getImage($scope.deckIdentity);
+            });
         };
 
         $scope.close = function() {
@@ -88,7 +92,7 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
                 type: $scope.isCorp ? "corp" : "runner"
             }
 
-            deckTrackerService.saveDeck($scope.data.deckName, deck);
+            deckTrackerService.saveDeck(deck);
             $scope.$parent.reFetchDecks();
             $scope.$parent.closeNew();
         };
@@ -132,8 +136,11 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
                 runner: runnerDecks
             };
         },
-        saveDeck: function(name, data) {
-            localStorage.setItem("deck-" + name, JSON.stringify(data));
+        saveDeck: function(data) {
+            if (!data.deckId) {
+                data.deckId = new Date().getTime();
+            }
+            localStorage.setItem("deck-" + data.deckId, JSON.stringify(data));
         }
     }
 
@@ -145,6 +152,7 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
 .service("netrunnerDBService", ["$http", function($http) {
 
     var initted = false;
+    var netrunnerdbLink = "http://netrunnerdb.com"
 
     var corpIds = [];
     var runnerIds = [];
@@ -171,6 +179,12 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
         },
         getRunnerIds: function() {
             return runnerIds;
+        },
+        getCard: function(card) {
+            return $http.get(netrunnerdbLink + "/api/card/" + card.id);
+        },
+        getImage: function(cardData) {
+            return netrunnerdbLink + cardData.imagesrc;
         }
     }
 

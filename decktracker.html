@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--Background pattern from subtlepatterns.com-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +24,7 @@
                     <button class="green" ng-click="addNew(true);">+</button>
                 </div>
                 <ul>
-                    <li class="deckEntry" ng-class="deck.identity.faction" ng-repeat="deck in corpDecks" ng-click="editDeck(deck);">{{deck.name}}</li>
+                    <li class="deckEntry" ng-class="deck.identity.faction" ng-repeat="deck in corpDecks | orderBy:['identity.faction', 'identity.id']" ng-click="editDeck(deck);">{{deck.name}}</li>
                 </ul>
             </div><div class="deckList">
                 <div class="inlineTitle">
@@ -31,7 +32,7 @@
                     <button class="green" ng-click="addNew(false);">+</button>
                 </div>
                 <ul>
-                    <li class="deckEntry" ng-class="deck.identity.faction" ng-repeat="deck in runnerDecks" ng-click="editDeck(deck);">{{deck.name}}</li>
+                    <li class="deckEntry" ng-class="deck.identity.faction" ng-repeat="deck in runnerDecks | orderBy:['identity.faction', 'identity.id']" ng-click="editDeck(deck);">{{deck.name}}</li>
                 </ul>
             </div>
         </div>

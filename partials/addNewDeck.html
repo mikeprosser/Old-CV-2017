@@ -6,7 +6,7 @@
     <span>Name:</span>
     <input type="text" ng-model="data.deckName">
     <span>ID:</span>
-    <select ng-if="isCorp" ng-options="id as id.name for id in corpIds track by id.name" ng-model="data.id"></select>
-    <select ng-if="!isCorp" ng-options="id as id.name for id in runnerIds track by id.name" ng-model="data.id"></select>
+    <select ng-if="isCorp" ng-options="id as id.name for id in corpIds | orderBy:['name'] track by id.name" ng-model="data.id"></select>
+    <select ng-if="!isCorp" ng-options="id as id.name for id in runnerIds | orderBy:['name'] track by id.name" ng-model="data.id"></select>
     <button class="green" ng-click="submit();">Submit</button>
 </div>
