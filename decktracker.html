@@ -18,14 +18,18 @@
         <hr>
         <div class="bodySection" ng-if="!addingNew && !editingDeck">
             <div class="deckList">
-                <h3>Corp Decks</h3>
-                <button ng-click="addNew(true);">+</button>
+                <div class="inlineTitle">
+                    <h3>Corp Decks</h3>
+                    <button class="green" ng-click="addNew(true);">+</button>
+                </div>
                 <ul>
                     <li class="deckEntry" ng-class="deck.identity.faction" ng-repeat="deck in corpDecks" ng-click="editDeck(deck);">{{deck.name}}</li>
                 </ul>
             </div><div class="deckList">
-                <h3>Runner Decks</h3>
-                <button ng-click="addNew(false);">+</button>
+                <div class="inlineTitle">
+                    <h3>Runner Decks</h3>
+                    <button class="green" ng-click="addNew(false);">+</button>
+                </div>
                 <ul>
                     <li class="deckEntry" ng-class="deck.identity.faction" ng-repeat="deck in runnerDecks" ng-click="editDeck(deck);">{{deck.name}}</li>
                 </ul>

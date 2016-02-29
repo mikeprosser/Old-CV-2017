@@ -92,6 +92,10 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
             $scope.$parent.reFetchDecks();
             $scope.$parent.closeNew();
         };
+
+        $scope.cancel = function() {
+            $scope.$parent.closeNew();
+        }
     }
 ])
 
