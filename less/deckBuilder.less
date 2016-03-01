@@ -15,6 +15,10 @@
 @neutral-background: rgb(239,239,244);
 @neutral-border: rgb(179,183,191);
 
+@small: ~"(max-width: 499px)";
+@medium: ~"(min-width: 500px)";
+@big: ~"(min-width: 769px)";
+
 .inlineTitle {
     h3, button {
         display: inline-block;
@@ -39,7 +43,7 @@ button {
 }
 
 .deckList {
-    @media (min-width: 769px) {
+    @media @big {
         width: 50%;
         padding: 0 0 0 20px;
         &:first-child {
@@ -68,59 +72,138 @@ button {
     padding: 5px;
     border: 1px solid @neutral-border;
     background-color: @neutral-background;
+}
 
-    &.Haas-Bioroid {
-        border-color: @haas-bioroid-border;
-        background-color: @haas-bioroid-background;
-    }
+.Haas-Bioroid {
+    border-color: @haas-bioroid-border;
+    background-color: @haas-bioroid-background;
+}
 
-    &.NBN {
-        border-color: @nbn-border;
-        background-color: @nbn-background;
-    }
+.NBN {
+    border-color: @nbn-border;
+    background-color: @nbn-background;
+}
 
-    &.Jinteki {
-        border-color: @jinteki-border;
-        background-color: @jinteki-background;
-    }
+.Jinteki {
+    border-color: @jinteki-border;
+    background-color: @jinteki-background;
+}
 
-    &.Weyland {
-        border-color: @weyland-border;
-        background-color: @weyland-background;
-    }
+.Weyland {
+    border-color: @weyland-border;
+    background-color: @weyland-background;
+}
 
-    &.Anarch {
-        border-color: @anarch-border;
-        background-color: @anarch-background;
-    }
+.Anarch {
+    border-color: @anarch-border;
+    background-color: @anarch-background;
+}
 
-    &.Criminal {
-        border-color: @criminal-border;
-        background-color: @criminal-background;
-    }
+.Criminal {
+    border-color: @criminal-border;
+    background-color: @criminal-background;
+}
 
-    &.Shaper {
-        border-color: @shaper-border;
-        background-color: @shaper-background;
-    }
+.Shaper {
+    border-color: @shaper-border;
+    background-color: @shaper-background;
 }
 
 .editingDeck {
     .titleSection {
         position: relative;
-        h3 {
-            width: 50%;
+        h3, input {
+            font-weight: 700;
+            font-size: 1.17em;
+            margin: 0.5em 0;
+            max-width: 100%;
+
+            @media @medium {
+                width: 50%;
+                margin: 0 0 1em;
+            }
         }
         .buttonHolder {
-            width: 10%;
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            webkit-transform: translateY(-50%);
-            moz-transform: translateY(-50%);
-            ms-transform: translateY(-50%);
-            o-transform: translateY(-50%);
+            margin: 0 0 0.5em 0;
+
+            @media @medium {
+                margin: 0;
+                width: 20%;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
         }
+    }
+
+    .deckBody {
+        @media @medium {
+            .imageHolder, .tableHolder {
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .imageHolder {
+                width: 250px;
+            }
+
+            .tableHolder {
+                width: calc(~'100% - 260px');
+                margin-left: 10px;
+                box-sizing: border-box;
+            }
+        }
+
+        .tableHolder {
+            border: 1px solid black;
+            height: 10px;
+        }
+
+        img {
+            width: 100%;
+
+            @media @small {
+                width: 50%;
+            }
+        }
+    }
+
+    .matchInfo {
+        >div {
+            display: inline-block;
+            vertical-align: middle;
+            box-sizing: border-box;
+            padding: 5px;
+            text-align: center;
+
+            @media (min-width: 500px) {
+                width: 25%;
+                &:not(:first-child) {
+                    border-left: 1px solid #b5b5b5;
+                }
+            }
+
+            @media (max-width: 499px) {
+                width: 50%;
+
+                &:nth-child(even) {
+                    border-left: 1px solid #b5b5b5;
+                }
+            }
+
+            select {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .newMatchInfo {
+        button {
+            margin: 1em;
+        }
+    }
+
+    .matchInfo, {
+        margin-bottom: 1em;
     }
 }

@@ -44,24 +44,101 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
         $scope.closeDeck = function() {
             $scope.editingDeck = null;
         };
+
+        $scope.$on('deckAltered', function(ev, info) {
+            for (var key in info) {
+                if ($scope.editingDeck.hasOwnProperty(key)) {
+                    $scope.editingDeck[key] = info[key];
+                }
+            }
+        });
     }
 ])
 
-.controller("deckController", ["$scope", "netrunnerDBService",
-    function($scope, netrunnerDBService) {
+.controller("deckController", ["$scope", "netrunnerDBService", "deckTrackerService",
+    function($scope, netrunnerDBService, deckTrackerService) {
 
         $scope.init = function() {
-            $scope.deck = $scope.editingDeck;
-            netrunnerDBService.getCard($scope.deck.identity).then(function(res) {
+            $scope.newMatch = null;
+            $scope.editingDeck = JSON.parse(JSON.stringify($scope.editingDeck));
+
+            var enemyFactions;
+
+            if ($scope.editingDeck.type === "runner") {
+                enemyFactions = ["Haas-Bioroid", "NBN", "Weyland", "Jinteki"];
+            } else {
+                enemyFactions = ["Anarch", "Criminal", "Shaper", "Sunny", "Adam", "Apex"];
+            }
+
+            $scope.deckStats = {
+                overall: {
+                    wins: 0,
+                    losses: 0
+                }
+            };
+
+            var x;
+
+            for (x = 0; x < enemyFactions.length; x++) {
+                $scope.deckStats[enemyFactions[x]] = {
+                    wins: 0,
+                    losses: 0
+                };
+            }
+
+            if ($scope.editingDeck.matches) {
+                for (x = 0; x < $scope.editingDeck.matches.length; x++) {
+
+                }
+            }
+
+
+            netrunnerDBService.getCard($scope.editingDeck.identity).then(function(res) {
                 $scope.deckIdentity = res.data[0];
                 $scope.idImage = netrunnerDBService.getImage($scope.deckIdentity);
             });
         };
 
-        $scope.close = function() {
-            $scope.$parent.closeDeck();
+        $scope.addMatch = function() {
+            $scope.newMatch = {
+                opponentId: null,
+                won: null,
+                date: new Date()
+            };
         };
 
+        $scope.confirmMatch = function() {
+            var accept = true;
+            if (!$scope.newMatch.opponentId || !$scope.newMatch.won) {
+                accept = false;
+            }
+
+            if (accept) {
+                if (!$scope.editingDeck.matches) {
+                    $scope.editingDeck.matches = [];
+                }
+                $scope.editingDeck.matches.push(JSON.parse(JSON.stringify($scope.newMatch)));
+                $scope.newMatch = null;
+                deckTrackerService.saveDeck($scope.editingDeck);
+                $scope.$emit('deckAltered', $scope.editingDeck);
+            } else {
+                alert("More information required");
+            }
+        };
+
+        $scope.cancelMatch = function() {
+            $scope.newMatch = null;
+        };
+
+        $scope.deleteMatch = function(index) {
+            $scope.editingDeck.matches.splice(index, 1);
+        };
+
+        $scope.save = function() {
+            deckTrackerService.saveDeck($scope.editingDeck);
+            $scope.$emit('deckAltered', $scope.editingDeck);
+            $scope.closeDeck();
+        };
     }
 ])
 
@@ -124,7 +201,7 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
                             corpDecks.push(deck);
                         }
                     } catch(e) {
-                        alert("One of your decks appears to have become corrupted")
+                        alert("One of your decks appears to have become corrupted");
                     }
                 }
             }
@@ -142,7 +219,7 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
             }
             localStorage.setItem("deck-" + data.deckId, JSON.stringify(data));
         }
-    }
+    };
 
     return functions;
 }])
