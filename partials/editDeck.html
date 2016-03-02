@@ -9,7 +9,9 @@
         <div class="imageHolder">
             <img class="cardImage" src="{{idImage}}" alt="{{deckIdentity.title}}">
         </div><div class="tableHolder">
-            
+            <canvas id="bar" class="chart chart-bar"
+                chart-data="deckStats" chart-labels="enemyFactions" chart-series="series" chart-colours="colors"
+            </canvas>
         </div>
         <hr>
         <div class="matchHolder">

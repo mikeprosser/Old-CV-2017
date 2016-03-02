@@ -1,4 +1,4 @@
-var app = angular.module("deckTrackerApp", []);
+var app = angular.module("deckTrackerApp", ['chart.js']);
 
 app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTrackerService",
     function($scope, netrunnerDBService, deckTrackerService) {
@@ -58,40 +58,41 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
 .controller("deckController", ["$scope", "netrunnerDBService", "deckTrackerService",
     function($scope, netrunnerDBService, deckTrackerService) {
 
+        $scope.colors = ["#99C95E", "#BF4840"];
+
         $scope.init = function() {
             $scope.newMatch = null;
             $scope.editingDeck = JSON.parse(JSON.stringify($scope.editingDeck));
 
-            var enemyFactions;
+            $scope.enemyFactions;
 
             if ($scope.editingDeck.type === "runner") {
-                enemyFactions = ["Haas-Bioroid", "NBN", "Weyland", "Jinteki"];
+                $scope.enemyFactions = ["Haas-Bioroid", "Jinteki", "NBN", "Weyland"];
             } else {
-                enemyFactions = ["Anarch", "Criminal", "Shaper", "Sunny", "Adam", "Apex"];
+                $scope.enemyFactions = ["Anarch", "Criminal", "Shaper", "Adam", "Apex", "Sunny"];
             }
 
-            $scope.deckStats = {
-                overall: {
-                    wins: 0,
-                    losses: 0
-                }
-            };
+            // The first array is for wins, the second is for losses
+            $scope.deckStats = [[],[]];
 
             var x;
 
-            for (x = 0; x < enemyFactions.length; x++) {
-                $scope.deckStats[enemyFactions[x]] = {
-                    wins: 0,
-                    losses: 0
-                };
+            for (x = 0; x < $scope.enemyFactions.length; x++) {
+                $scope.deckStats[0].push(0);
+                $scope.deckStats[1].push(0);
             }
 
             if ($scope.editingDeck.matches) {
                 for (x = 0; x < $scope.editingDeck.matches.length; x++) {
-
+                    var match = $scope.editingDeck.matches[x];
+                    var ndx = $scope.enemyFactions.indexOf(match.opponentId.faction);
+                    if (match.won === "true") {
+                        $scope.deckStats[0][ndx]++;
+                    } else {
+                        $scope.deckStats[1][ndx]++;
+                    }
                 }
             }
-
 
             netrunnerDBService.getCard($scope.editingDeck.identity).then(function(res) {
                 $scope.deckIdentity = res.data[0];
@@ -118,6 +119,14 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
                     $scope.editingDeck.matches = [];
                 }
                 $scope.editingDeck.matches.push(JSON.parse(JSON.stringify($scope.newMatch)));
+
+                var ndx = $scope.enemyFactions.indexOf($scope.newMatch.opponentId.faction);
+                if ($scope.newMatch.won === "true") {
+                    $scope.deckStats[0][ndx]++;
+                } else {
+                    $scope.deckStats[1][ndx]++;
+                }
+
                 $scope.newMatch = null;
                 deckTrackerService.saveDeck($scope.editingDeck);
                 $scope.$emit('deckAltered', $scope.editingDeck);

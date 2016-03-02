@@ -137,7 +137,21 @@ button {
     }
 
     .deckBody {
-        @media @medium {
+        .imageHolder, .tableHolder {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .imageHolder {
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .tableHolder {
+            width: 100%;
+        }
+
+        @media @big {
             .imageHolder, .tableHolder {
                 display: inline-block;
                 vertical-align: top;
@@ -152,11 +166,6 @@ button {
                 margin-left: 10px;
                 box-sizing: border-box;
             }
-        }
-
-        .tableHolder {
-            border: 1px solid black;
-            height: 10px;
         }
 
         img {

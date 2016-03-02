@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <!--Background pattern from subtlepatterns.com-->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mike Prosser | Deck Tracker</title>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/deckBuilder.css" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    <script src="./js/deckTrackerApp.js"></script>
-</head>
-<body ng-app="deckTrackerApp">
-    <div id="mainContainer" ng-controller="deckTrackerController" ng-init="init();">
-        <div class="topSection">
-            <h1>Netrunner Deck Tracker</h1>
-        </div>
-        <hr>
-        <div class="bodySection" ng-if="!addingNew && !editingDeck">
-            <div class="deckList">
-                <div class="inlineTitle">
-                    <h3>Corp Decks</h3>
-                    <button class="green" ng-click="addNew(true);">+</button>
-                </div>
-                <ul>
-                    <li class="deckEntry" ng-class="deck.identity.faction" ng-repeat="deck in corpDecks | orderBy:['identity.faction', 'identity.id'] track by $index" ng-click="editDeck(deck);">{{deck.name}}</li>
-                </ul>
-            </div><div class="deckList">
-                <div class="inlineTitle">
-                    <h3>Runner Decks</h3>
-                    <button class="green" ng-click="addNew(false);">+</button>
-                </div>
-                <ul>
-                    <li class="deckEntry" ng-class="deck.identity.faction" ng-repeat="deck in runnerDecks | orderBy:['identity.faction', 'identity.id'] track by $index" ng-click="editDeck(deck);">{{deck.name}}</li>
-                </ul>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Mike Prosser | Deck Tracker</title>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/deckBuilder.css" rel="stylesheet" type="text/css">
+        <link href="css/angular-chart.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body ng-app="deckTrackerApp">
+        <div id="mainContainer" ng-controller="deckTrackerController" ng-init="init();">
+            <div class="topSection">
+                <h1>Netrunner Deck Tracker</h1>
             </div>
+            <hr>
+            <div class="bodySection" ng-if="!addingNew && !editingDeck">
+                <div class="deckList">
+                    <div class="inlineTitle">
+                        <h3>Corp Decks</h3>
+                        <button class="green" ng-click="addNew(true);">+</button>
+                    </div>
+                    <ul>
+                        <li class="deckEntry" ng-class="deck.identity.faction" ng-repeat="deck in corpDecks | orderBy:['identity.faction', 'identity.id'] track by $index" ng-click="editDeck(deck);">{{deck.name}}</li>
+                    </ul>
+                </div><div class="deckList">
+                    <div class="inlineTitle">
+                        <h3>Runner Decks</h3>
+                        <button class="green" ng-click="addNew(false);">+</button>
+                    </div>
+                    <ul>
+                        <li class="deckEntry" ng-class="deck.identity.faction" ng-repeat="deck in runnerDecks | orderBy:['identity.faction', 'identity.id'] track by $index" ng-click="editDeck(deck);">{{deck.name}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bodySection" ng-if="addingNew" ng-controller="addingNewController" ng-include="'partials/addNewDeck.html'" ng-init="init();"></div>
+            <div class="bodySection" ng-if="editingDeck" ng-controller="deckController" ng-include="'partials/editDeck.html'" ng-init="init();"></div>
+            <hr>
         </div>
-        <div class="bodySection" ng-if="addingNew" ng-controller="addingNewController" ng-include="'partials/addNewDeck.html'" ng-init="init();"></div>
-        <div class="bodySection" ng-if="editingDeck" ng-controller="deckController" ng-include="'partials/editDeck.html'" ng-init="init();"></div>
-        <hr>
-    </div>
-</body>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="./js/angular-chart.min.js"></script>
+    <script src="./js/deckTrackerApp.js"></script>
 </html>
