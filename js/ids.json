@@ -1,0 +1,276 @@
+{
+    "runners": [
+        {
+            "name": "Edward Kim: Humanity's Hammer",
+            "faction": "Anarch",
+            "id": "07028"
+        },
+        {
+            "name": "MaxX: Maximum Punk Rock",
+            "faction": "Anarch",
+            "id": "07029"
+        },
+        {
+            "name": "Noise: Hacker Extraordinaire",
+            "faction": "Anarch",
+            "id": "01001"
+        },
+        {
+            "name": "Quetzal: Free Spirit",
+            "faction": "Anarch",
+            "id": "06052"
+        },
+        {
+            "name": "Reina Roja: Freedom Fighter",
+            "faction": "Anarch",
+            "id": "04041"
+        },
+        {
+            "name": "Valencia Estevez: The Angel of Cayambe",
+            "faction": "Anarch",
+            "id": "07030"
+        },
+        {
+            "name": "Whizzard: Master Gamer",
+            "faction": "Anarch",
+            "id": "02001"
+        },
+        {
+            "name": "Andromeda: Dispossessed Ristie",
+            "faction": "Criminal",
+            "id": "02083"
+        },
+        {
+            "name": "Armand \"Geist\" Walker: Tech Lord",
+            "faction": "Criminal",
+            "id": "08063"
+        },
+        {
+            "name": "Gabriel Santiago: Consummate Professional",
+            "faction": "Criminal",
+            "id": "01017"
+        },
+        {
+            "name": "Iain Stirling: Retired Spook",
+            "faction": "Criminal",
+            "id": "05028"
+        },
+        {
+            "name": "Ken \"Express\" Tenma: Disappeared Clone",
+            "faction": "Criminal",
+            "id": "05029"
+        },
+        {
+            "name": "Laramy Fisk: Savvy Investor",
+            "faction": "Criminal",
+            "id": "08104"
+        },
+        {
+            "name": "Leela Patel: Trained Pragmatist",
+            "faction": "Criminal",
+            "id": "06095"
+        },
+        {
+            "name": "Silhouette: Stealth Operative",
+            "faction": "Criminal",
+            "id": "05030"
+        },
+        {
+            "name": "Chaos Theory: Wünderkind",
+            "faction": "Shaper",
+            "id": "02046"
+        },
+        {
+            "name": "Exile: Streethawk",
+            "faction": "Shaper",
+            "id": "03030"
+        },
+        {
+            "name": "Hayley Kaplan: Universal Scholar",
+            "faction": "Shaper",
+            "id": "08025"
+        },
+        {
+            "name": "Jesminder Sareen: Girl Behind the Curtain",
+            "faction": "Shaper",
+            "id": "10006"
+        },
+        {
+            "name": "Kate \"Mac\" McCaffrey: Digital Tinker",
+            "faction": "Shaper",
+            "id": "01033"
+        },
+        {
+            "name": "Nasir Meidan: Cyber Explorer",
+            "faction": "Shaper",
+            "id": "06017"
+        },
+        {
+            "name": "Rielle \"Kit\" Peddler: Transhuman",
+            "faction": "Shaper",
+            "id": "03028"
+        },
+        {
+            "name": "The Professor: Keeper of Knowledge",
+            "faction": "Shaper",
+            "id": "03029"
+        },
+        {
+            "name": "Apex: Invasive Predator",
+            "faction": "Apex",
+            "id": "09029"
+        },
+        {
+            "name": "Adam: Compulsive Hacker",
+            "faction": "Adam",
+            "id": "09037"
+        },
+        {
+            "name": "Sunny Lebeau: Security Specialist",
+            "faction": "Sunny",
+            "id": "09045"
+        }
+    ],
+    "corps": [
+        {
+            "name": "Argus Security: Protection Guaranteed",
+            "faction": "Weyland",
+            "id": "07001"
+        },
+        {
+            "name": "Blue Sun: Powering the Future",
+            "faction": "Weyland",
+            "id": "06068"
+        },
+        {
+            "name": "Gagarin Deep Space: Expanding the Horizon",
+            "faction": "Weyland",
+            "id": "07002"
+        },
+        {
+            "name": "GRNDL: Power Unleashed",
+            "faction": "Weyland",
+            "id": "04097"
+        },
+        {
+            "name": "Titan Transnational: Investing in Your Future",
+            "faction": "Weyland",
+            "id": "07003"
+        },
+        {
+            "name": "Weyland Consortium: Because We Built It",
+            "faction": "Weyland",
+            "id": "02076"
+        },
+        {
+            "name": "Weyland Consortium: Building a Better World",
+            "faction": "Weyland",
+            "id": "01093"
+        },
+        {
+            "name": "The Foundry: Refining the Process",
+            "faction": "Haas-Bioroid",
+            "id": "06021"
+        },
+        {
+            "name": "Haas-Bioroid: Stronger Together",
+            "faction": "Haas-Bioroid",
+            "id": "02010"
+        },
+        {
+            "name": "Haas-Bioroid: Engineering the Future",
+            "faction": "Haas-Bioroid",
+            "id": "01054"
+        },
+        {
+            "name": "Cybernetics Division: Humanity Upgraded",
+            "faction": "Haas-Bioroid",
+            "id": "08050"
+        },
+        {
+            "name": "NEXT Design: Guarding the Net",
+            "faction": "Haas-Bioroid",
+            "id": "03003"
+        },
+        {
+            "name": "Custom Biotics: Engineered for Success",
+            "faction": "Haas-Bioroid",
+            "id": "03002"
+        },
+        {
+            "name": "Cerebral Imaging: Infinite Frontiers",
+            "faction": "Haas-Bioroid",
+            "id": "03001"
+        },
+        {
+            "name": "Chronos Protocol: Selective Mind-mapping",
+            "faction": "Jinteki",
+            "id": "08111"
+        },
+        {
+            "name": "Harmony Medtech: Biomedical Pioneer",
+            "faction": "Jinteki",
+            "id": "05001"
+        },
+        {
+            "name": "Industrial Genomics: Growing Solutions",
+            "faction": "Jinteki",
+            "id": "06105"
+        },
+        {
+            "name": "Jinteki Biotech: Life Imagined",
+            "faction": "Jinteki",
+            "id": "08012"
+        },
+        {
+            "name": "Jinteki: Personal Evolution",
+            "faction": "Jinteki",
+            "id": "01067"
+        },
+        {
+            "name": "Jinteki: Replicating Perfection",
+            "faction": "Jinteki",
+            "id": "02031"
+        },
+        {
+            "name": "Nisei Division: The Next Generation",
+            "faction": "Jinteki",
+            "id": "05002"
+        },
+        {
+            "name": "Tennin Institute: The Secrets Within",
+            "faction": "Jinteki",
+            "id": "05003"
+        },
+        {
+            "name": "SYNC: Everything, Everywhere",
+            "faction": "NBN",
+            "id": "09001"
+        },
+        {
+            "name": "Spark Agency: Worldswide Reach",
+            "faction": "NBN",
+            "id": "09003"
+        },
+        {
+            "name": "New Angeles Sol: Your News",
+            "faction": "NBN",
+            "id": "09002"
+        },
+        {
+            "name": "Near-Earth Hub: Broadcast Center",
+            "faction": "NBN",
+            "id": "06005"
+        },
+        {
+            "name": "NBN: The World is Yours*",
+            "faction": "NBN",
+            "id": "02114"
+        },
+        {
+            "name": "NBN: Making News",
+            "faction": "NBN",
+            "id": "01080"
+        }
+    ]
+}

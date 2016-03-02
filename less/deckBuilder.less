@@ -1,0 +1,218 @@
+@haas-bioroid-background: rgb(238,224,248);
+@haas-bioroid-border: rgb(86,75,138);
+@nbn-background: rgb(239,228,208);
+@nbn-border: rgb(242,202,80);
+@jinteki-background: rgb(245,222,217);
+@jinteki-border: rgb(140,7,18);
+@weyland-background: rgb(235,244,240);
+@weyland-border: rgb(57,115,94);
+@anarch-background: rgb(239,230,223);
+@anarch-border: rgb(242,109,61);
+@criminal-background: rgb(221,231,253);
+@criminal-border: rgb(96,147,222);
+@shaper-background: rgb(235,245,234);
+@shaper-border: rgb(96,181,78);
+@neutral-background: rgb(239,239,244);
+@neutral-border: rgb(179,183,191);
+
+@small: ~"(max-width: 499px)";
+@medium: ~"(min-width: 500px)";
+@big: ~"(min-width: 769px)";
+
+.inlineTitle {
+    h3, button {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+button {
+    border: 1px solid !important;
+    border-radius: 2px;
+    cursor: pointer;
+
+    &.green {
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+    }
+
+    &.red {
+        background-color: #d9534f;
+        border-color: #d43f3a;
+    }
+}
+
+.deckList {
+    @media @big {
+        width: 50%;
+        padding: 0 0 0 20px;
+        &:first-child {
+            padding-right: 20px;
+            padding-left: 0;
+        }
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    .deckEntry {
+        cursor: pointer;
+        margin-bottom: 10px;
+        list-style: none;
+    }
+}
+
+.deckEntry {
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid @neutral-border;
+    background-color: @neutral-background;
+}
+
+.Haas-Bioroid {
+    border-color: @haas-bioroid-border;
+    background-color: @haas-bioroid-background;
+}
+
+.NBN {
+    border-color: @nbn-border;
+    background-color: @nbn-background;
+}
+
+.Jinteki {
+    border-color: @jinteki-border;
+    background-color: @jinteki-background;
+}
+
+.Weyland {
+    border-color: @weyland-border;
+    background-color: @weyland-background;
+}
+
+.Anarch {
+    border-color: @anarch-border;
+    background-color: @anarch-background;
+}
+
+.Criminal {
+    border-color: @criminal-border;
+    background-color: @criminal-background;
+}
+
+.Shaper {
+    border-color: @shaper-border;
+    background-color: @shaper-background;
+}
+
+.editingDeck {
+    .titleSection {
+        position: relative;
+        h3, input {
+            font-weight: 700;
+            font-size: 1.17em;
+            margin: 0.5em 0;
+            max-width: 100%;
+
+            @media @medium {
+                width: 50%;
+                margin: 0 0 1em;
+            }
+        }
+        .buttonHolder {
+            margin: 0 0 0.5em 0;
+
+            @media @medium {
+                margin: 0;
+                width: 20%;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+
+    .deckBody {
+        .imageHolder, .tableHolder {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .imageHolder {
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .tableHolder {
+            width: 100%;
+        }
+
+        @media @big {
+            .imageHolder, .tableHolder {
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .imageHolder {
+                width: 250px;
+            }
+
+            .tableHolder {
+                width: calc(~'100% - 260px');
+                margin-left: 10px;
+                box-sizing: border-box;
+            }
+        }
+
+        img {
+            width: 100%;
+
+            @media @small {
+                width: 50%;
+            }
+        }
+    }
+
+    .matchInfo {
+        >div {
+            display: inline-block;
+            vertical-align: middle;
+            box-sizing: border-box;
+            padding: 5px;
+            text-align: center;
+
+            @media (min-width: 500px) {
+                width: 25%;
+                &:not(:first-child) {
+                    border-left: 1px solid #b5b5b5;
+                }
+            }
+
+            @media (max-width: 499px) {
+                width: 50%;
+
+                &:nth-child(even) {
+                    border-left: 1px solid #b5b5b5;
+                }
+            }
+
+            select {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .newMatchInfo {
+        button {
+            margin: 1em;
+        }
+    }
+
+    .matchInfo, {
+        margin-bottom: 1em;
+    }
+}
