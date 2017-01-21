@@ -96,7 +96,7 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
             }
 
             netrunnerDBService.getCard($scope.editingDeck.identity).then(function(res) {
-                $scope.deckIdentity = res.data[0];
+                $scope.deckIdentity = res.data.data[0];
                 $scope.idImage = netrunnerDBService.getImage($scope.deckIdentity);
             });
         };
@@ -239,7 +239,7 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
 .service("netrunnerDBService", ["$http", function($http) {
 
     var initted = false;
-    var netrunnerdbLink = "http://netrunnerdb.com"
+    var netrunnerdbLink = "https://netrunnerdb.com"
 
     var corpIds = [];
     var runnerIds = [];
@@ -268,10 +268,10 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
             return runnerIds;
         },
         getCard: function(card) {
-            return $http.get(netrunnerdbLink + "/api/card/" + card.id);
+            return $http.get(netrunnerdbLink + "/api/2.0/public/card/" + card.id);
         },
         getImage: function(cardData) {
-            return netrunnerdbLink + cardData.imagesrc;
+            return netrunnerdbLink + "/card_image/" + cardData.code + ".png";
         }
     }
 
