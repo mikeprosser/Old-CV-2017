@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="lmeApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Let Mi Explain</title>
+        <script src="./node_modules/angular/angular.min.js"></script>
+        <script src="./node_modules/angular-ui-grid/ui-grid.min.js"></script>
+        <script src="./js/app.js"></script>
+        <link rel="stylesheet" href="./node_modules/angular-ui-grid/ui-grid.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body ng-controller="MainCtrl" ng-init="init();">
+        <h1>Compare Xiaomi Devices to find the best one for you</h1>
+        <div id="filterContainer">
+            <h3>Fields To Show</h3>
+            <ul>
+                <li><input type="checkbox" ng-change="updateVisibleFields('edition');" disabled="true" ng-model="visibleFields.edition">Edition</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('model');" disabled="true" ng-model="visibleFields.model">Model</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('screenSize');" ng-model="visibleFields.screenSize">Screen Size</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('minMemory');" ng-model="visibleFields.minMemory">Memory</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('minStorage');" ng-model="visibleFields.minStorage">Storage</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('cardSlot');" ng-model="visibleFields.cardSlot">Card Slot</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('backCamera');" ng-model="visibleFields.backCamera">Back Camera</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('frontCamera');" ng-model="visibleFields.frontCamera">Front Camera</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('colours');" ng-model="visibleFields.colours">Colours</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('averagePrice');" ng-model="visibleFields.averagePrice">Average Price</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('battery');" ng-model="visibleFields.battery">Battery (mAH)</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('carriers');" ng-model="visibleFields.carriers">Compatible Carriers</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('cpu');" ng-model="visibleFields.cpu">CPU</li>
+                <li><input type="checkbox" ng-change="updateVisibleFields('approxTax');" ng-model="visibleFields.approxTax">Approximate Tax</li>
+            </ul>
+            <h3>Filters</h3>
+            <div>
+                <label for="edition">Edition</label>
+                <select id="edition"
+                    ng-change="updateFilterText();"
+                    ng-model="filterText.edition">
+                    <option value="">Select Edition</option>
+                    <option value="Redmi">Redmi</option>
+                    <option value="Mi">Mi</option>
+                </select>
+            </div><div>
+                <label for="name">Name</label>
+                <input id="name"
+                    type="text"
+                    ng-change="updateFilterText();"
+                    ng-model="filterText.name"
+                    debounce>
+                </input>
+            </div><div>
+                <label for="screenSize">Screen Size (more than)</label>
+                <input id="screenSize"
+                    type="number"
+                    ng-change="updateFilterText();"
+                    ng-model="filterText.screenSize"
+                    debounce>
+                </input>
+            </div><div>
+                <label for="minMemory">Memory (more than)</label>
+                <input id="minMemory"
+                    type="number"
+                    ng-change="updateFilterText();"
+                    ng-model="filterText.minMemory"
+                    debounce>
+                </input>
+            </div><div>
+                <label for="minStorage">Storage (more than)</label>
+                <input id="minStorage"
+                    type="number"
+                    ng-change="updateFilterText();"
+                    ng-model="filterText.minStorage"
+                    debounce>
+                </input>
+            </div><div>
+                <label for="averagePrice">Average Price (less than)</label>
+                <input id="averagePrice"
+                    type="number"
+                    ng-change="updateFilterText();"
+                    ng-model="filterText.averagePrice"
+                    debounce>
+                </input>
+            </div><div>
+                <label for="carriers">Carrier (4G)</label>
+                <select id="carriers"
+                    ng-change="updateFilterText();"
+                    ng-model="filterText.carriers">
+                    <option value="">Select Carrier</option>
+                    <option ng-repeat="(carrier, bands) in carriers" value="{{bands}}">{{carrier}}</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div id="gridContainer">
+            <div class="gridStyle" ui-grid="gridOptions" ui-grid-selection ui-grid-pagination ui-grid-edit ui-grid-resize-columns ui-grid-move-columns></div>
+        </div>
+    </body>
+</html>
