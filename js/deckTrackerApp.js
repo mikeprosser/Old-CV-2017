@@ -43,6 +43,7 @@ app.controller("deckTrackerController", ["$scope", "netrunnerDBService", "deckTr
 
         $scope.closeDeck = function() {
             $scope.editingDeck = null;
+            $scope.getDecks();
         };
 
         $scope.$on('deckAltered', function(ev, info) {
